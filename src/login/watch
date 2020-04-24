@@ -1,0 +1,147 @@
+     
+import React, { Component } from "react";
+
+
+import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, Expo,Platform, StyleSheet, Button, Image,Dimensions, ScrollView, TouchableHighlight} from 'react-native';
+let deviceHeight = Dimensions.get('window').height;
+let deviceWidth = Dimensions.get('window').width;
+
+class Watch extends React.Component {
+state={
+      
+        videoList:[
+        {
+            name:'Darryl Dwayne Granberry Jr.',
+            channel:'The DDG Family',
+            subscribers:'3.69 Million Subscribers',
+            post:'926 Videos',
+            imageLink:'https://akns-images.eonline.com/eol_images/Entire_Site/2019523/rs_634x1024-190623142933-634.DDG-2019-BET-awards-red-carpet-fashions.ct.062319.jpg',
+        },
+        {
+            name:'Queen Naija and Clarence White',
+            channel:'The Royal Family',
+            subscribers:'2.6 Million Sunscribers',
+            post:'141 Videos',
+            imageLink:'https://foxy99.com/wp-content/uploads/sites/54/2019/05/GettyImages-1140626616.jpg',
+        },
+        {
+            name:'Dearra and Ken',
+            channel:'DK4L',
+            subscribers:'6.09 Subscribers',
+            post:'253 Videos',
+    imageLink:'https://thenetline.com/wp-content/uploads/2020/01/Dearra-and-Ken-4-Life-.jpg',
+        },
+        {
+            name:'Ti and Daysha',
+            channel:'Taylor Girls',
+            subscribers:'Dora',
+            post:'343 Videos',
+            imageLink:'https://singersroom.com/wp-content/uploads/2018/10/taylor-girlz-block-party-11.jpg',
+        },
+      
+            ]
+    }
+    
+
+  render() {
+     
+    return (
+      
+<View style={styles.container}>
+
+<ScrollView>
+
+{this.state.videoList.map((video) => (
+<View style={styles.videoListContainer}>
+
+<ScrollView>
+
+<View style={styles.sideContainer}>
+
+<Text style={styles.name}>
+{video.name}
+</Text>
+<Text style={styles.blueText}>
+{video.channel}
+</Text>
+<Text style={styles.blueText}>
+{video.subscribers}
+</Text>
+<Text style={styles.blueText}>
+{video.post}
+</Text>
+</View>
+</ScrollView>
+
+<View style={styles.middleContainer}>
+<Image source={{uri:video.imageLink}}
+            style={{ height:159, width:140,}}/>
+            <TouchableHighlight
+              onPress={() => this.props.navigation.navigate('Watch')}
+            >
+           <View style={styles.touchableButton1}>
+                        <Text style={styles.buttonText}>
+                            Lets Watch
+                        </Text>
+                    </View>
+                </TouchableHighlight>
+</View>
+</View>
+
+))}
+</ScrollView>
+</View>
+
+  
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center',
+    },
+
+    videoListContainer:{
+      margin:5,
+      flexDirection:'row',
+      backgroundColor:'skyblue',
+      borderWidth:2,
+      borderBottomColor:'black',
+      padding:60,
+    },
+
+sideContainer:{
+  height:deviceHeight/3.5,
+  width:deviceHeight/2,
+  alignItems:'center',
+  justifyContent:'center',
+},
+
+middleContainer:{
+  height:deviceHeight/3.5,
+  width:deviceHeight/2,
+  flexDirection:'column',
+  alignItems:'center',
+  justifyContent:'center',
+},
+
+blueText:{
+  fontSize:15,
+  fontFamily:'Comic Sans MS',
+  textAlign:'center',
+},
+
+name:{
+  fontSize:20,
+  color:'white',
+  textAlign:'center',
+  fontWeight:'bold',
+  fontFamily:'Comic Sans MS',
+},
+
+
+});
+export default Watch;
