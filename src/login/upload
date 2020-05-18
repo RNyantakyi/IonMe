@@ -1,20 +1,8 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  Keyboard,
-  View,
-  TextInput,
-  TouchableWithoutFeedback,
-  Alert,
-  KeyboardAvoidingView,
-  Button,
-  Image,
-  TouchableHighlight,
-  ImageBackground,Platform,Animated
-} from 'react-native';
+import {StyleSheet,Text,Keyboard,View,Dimensions,TextInput,TouchableWithoutFeedback,Alert,KeyboardAvoidingView,Button,Image,TouchableHighlight,ImageBackground,Platform,Animated} from 'react-native';
 
-
+let deviceHeight = Dimensions.get('window').height;
+let deviceWidth = Dimensions.get('window').width;
 
 class Upload extends React.Component {
 
@@ -25,9 +13,13 @@ class Upload extends React.Component {
 
 
       <View style={styles.container}>
-       
+       <Image source={{uri:'https://upload.wikimedia.org/wikipedia/commons/6/68/Video_camera_icon.svg'}}
+            style={{ height:60, width:60,}}/>
         
- 
+ <View style={styles.contentContainer}>
+<Image 
+source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKFIORW8GPs3T24lrFoHP7Zkn3TB7d2uweM_Ue1hrQ5tSX6KHN:https://s2.r29static.com/bin/entry/913/720x864,85/1966284/image.webp&s'}}style={{height:300,width:200,borderWidth:5,}}/>
+</View>
 
       </View>
     );
@@ -39,7 +31,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'red',
     justifyContent: 'center',
+    alignItems:'center',
   },
+  contentContainer: {
+height: 5*(deviceHeight/6),
+width: deviceWidth,
+alignItems: 'center',
+justifyContent: 'center',
+backgroundColor: 'pink',
+},
 
 });
 
