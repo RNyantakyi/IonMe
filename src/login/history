@@ -1,45 +1,87 @@
-import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  Keyboard,
-  View,
-  TextInput,
-  TouchableWithoutFeedback,
-  Alert,
-  KeyboardAvoidingView,
-  Button,
-  Image,
-  TouchableHighlight,
-  ImageBackground,Platform,Animated
-} from 'react-native';
+import React, { Component } from "react";
 
 
+import {StyleSheet,ScrollView, Text,Keyboard,View,TextInput,TouchableWithoutFeedback,Alert, KeyboardAvoidingView,Button,Image,Dimensions,TouchableHighlight,ImageBackground,Platform,Animated} from 'react-native';
+let deviceHeight = Dimensions.get('window').height;
+let deviceWidth = Dimensions.get('window').width;
 
 class History extends React.Component {
+state={
+   videoList:[
+        {   imageLink:'https://akns-images.eonline.com/eol_images/Entire_Site/2019523/rs_634x1024-190623142933-634.DDG-2019-BET-awards-red-carpet-fashions.ct.062319.jpg',
+        },
+        {    imageLink:'https://foxy99.com/wp-content/uploads/sites/54/2019/05/GettyImages-1140626616.jpg',
+        },
+        {
+      imageLink:'https://thenetline.com/wp-content/uploads/2020/01/Dearra-and-Ken-4-Life-.jpg',
+        },
+        {
+          imageLink:'https://singersroom.com/wp-content/uploads/2018/10/taylor-girlz-block-party-11.jpg',
+        },
+      
+            ]
+}
 
+        
   
-
   render() {
     return (
-
-
       <View style={styles.container}>
-       
-        
- 
+<ScrollView>
 
-      </View>
-    );
-  }
+{this.state.videoList.map((video) => (
+<View style={styles.videoListContainer}>
+
+
+
+<View style={styles.middleContainer}>
+<Image source={{uri:video.imageLink}}
+            style={{ height:159, width:140,}}/>
+            
+ 
+</View>
+</View>
+
+))}
+</ScrollView>
+
+<ScrollView>
+{this.state.videoList.map((video) => (
+<View style= {styles.textContainer}>
+            <TouchableHighlight
+              onPress={() => this.props.navigation.navigate('Upload')}
+            >
+           <View style={styles.touchableButton1}>
+                        <Text style={styles.buttonText}>
+                            Upload 
+                        </Text>
+                    </View>
+                </TouchableHighlight>
+                </View>
+                ))}
+</ScrollView>
+  </View>          
+     
+  );
+}
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-  },
+ container: {
+height: deviceHeight,
+width: deviceWidth,
+backgroundColor:'lightpink',
+},
+buttonText:{
+  fontSize: 30,
+},
+touchableButton1:{
+  backgroundColor:'yellow',
+},
+textContainer:{
+  alignItems:'center',
+  justifyContent:'center',
+},
 
 });
 
